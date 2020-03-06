@@ -14,6 +14,7 @@ namespace Class
 			Ex4.Run(args);
 			Ex5.Run(args);
 			Ex6.Run(args);
+			Ex12.Run(args);
 		}
 	}
 }

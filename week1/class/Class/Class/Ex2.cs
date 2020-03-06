@@ -18,16 +18,16 @@ namespace Class
 			switch (operation)
 			{
 				case "+":
-					Console.WriteLine("op1 + op2 = " + (op1 + op2));
+					Console.WriteLine("op1 + op2 = " + (double)(op1 + op2));
 					break;
 				case "-":
-					Console.WriteLine("op1 + op2 = " + (op1 - op2));
+					Console.WriteLine("op1 + op2 = " + (double)(op1 - op2));
 					break;
 				case "*":
-					Console.WriteLine("op1 + op2 = " + (op1 * op2));
+					Console.WriteLine("op1 + op2 = " + (double)(op1 * op2));
 					break;
 				case "/":
-					Console.WriteLine("op1 + op2 = " + (op1 / op2));
+					Console.WriteLine("op1 + op2 = " + (double)(op1 / op2));
 					break;
 				default:
 					Console.WriteLine("Invalid operator");
