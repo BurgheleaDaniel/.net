@@ -8,7 +8,7 @@ namespace Tema1r
 	{
 		static public void Run(string text)
 		{
-			var sb = new StringBuilder("", text.Length);
+			var sb = new StringBuilder();
 
 			foreach (var item in text)
 			{
