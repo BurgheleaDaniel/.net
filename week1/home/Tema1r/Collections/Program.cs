@@ -6,7 +6,12 @@ namespace Collections
 	{
 		static void Main(string[] args)
 		{
-			Arrays.Run();
+			//Arrays.Run();
+			//List.Run();
+			//Dictionaries.Run();
+			//Queues.Run();
+			//Stacks.Run();
+			LinkedLists.Run();
 		}
 	}
 }
