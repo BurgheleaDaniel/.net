@@ -45,11 +45,29 @@ namespace HotelApp
 					decimal priceForNoOfDays = item.GetPriceForDays(noOfDays);
 					Console.WriteLine($"Price for {noOfRooms} rooms: {priceForNoOfRooms}");
 					Console.WriteLine($"Price for {noOfDays} days: {priceForNoOfDays}");
-					
+
 				}
 			}
 
 			hotelManager.DeleteHotel(0);
+
+			decimal maxAmount = 108;
+
+			foreach (Hotel hotel in hotelManager.GetAllHotels())
+			{
+				int index = 0;
+				hotel.Print();
+				foreach (Room item in hotel.GetAllRooms(maxAmount))
+				{
+					item.Print();
+
+					decimal priceForNoOfRooms = hotel.GetPriceForNumberOfRooms(index++, noOfRooms);
+					decimal priceForNoOfDays = item.GetPriceForDays(noOfDays);
+					Console.WriteLine($"Price for {noOfRooms} rooms: {priceForNoOfRooms}");
+					Console.WriteLine($"Price for {noOfDays} days: {priceForNoOfDays}");
+
+				}
+			}
 
 		}
 	}

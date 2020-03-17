@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace HotelApp
@@ -53,19 +54,24 @@ namespace HotelApp
 			return this;
 		}
 
-		public List<Room> GetAllRooms()
-		{
-			return this.rooms;
-		}
-
 		public decimal GetPriceForNumberOfRooms(int roomIndex, int numberOfRooms)
 		{
 			return this.rooms[roomIndex].Rate.Amount * numberOfRooms;
 		}
 
+		public List<Room> GetAllRooms()
+		{
+			return this.rooms;
+		}
+
+		internal List<Room> GetAllRooms(decimal maxAmount)
+		{
+			return this.rooms.FindAll(r => r.Rate.Amount < maxAmount);
+		}
 		internal void Print()
 		{
 			Console.WriteLine($"\nHotel details:\t{this.Name} ({this.City})");
 		}
+
 	}
 }

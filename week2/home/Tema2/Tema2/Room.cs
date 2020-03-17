@@ -40,7 +40,7 @@ namespace HotelApp
 
 			set
 			{
-				if (value.Amount <= 0 || value.Amount <= 0)
+				if (value.Amount <= 0 )
 				{
 					throw new ArgumentException("Invalid Rate!");
 				}
