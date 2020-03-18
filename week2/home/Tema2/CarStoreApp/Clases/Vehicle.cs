@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
+using System;
 using CarStoreApp.Interfaces;
 
 namespace CarStoreApp.Clases
@@ -83,6 +82,6 @@ namespace CarStoreApp.Clases
 			}
 		}
 
-		public Producer Producer { get; set; }
+		public IProducer Producer { get; set; }
 	}
 }

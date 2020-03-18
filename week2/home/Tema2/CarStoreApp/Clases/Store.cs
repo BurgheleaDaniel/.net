@@ -1,6 +1,6 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
-using System.Text;
 using CarStoreApp.Interfaces;
 
 namespace CarStoreApp.Clases
@@ -52,34 +52,34 @@ namespace CarStoreApp.Clases
 			}
 		}
 
-		List<Vehicle> vehicles = new List<Vehicle>();
-		List<Order> orders = new List<Order>();
+		List<IVehicle> vehicles = new List<IVehicle>();
+		List<IOrder> orders = new List<IOrder>();
 
-		public void AddVehicle(Vehicle vehicle)
+		public void AddVehicle(IVehicle vehicle)
 		{
 			vehicles.Add(vehicle);
 			logger.Log($"Vehicle was added");
 			logger.Log($"Details: {vehicle.Make} {vehicle.Model} {vehicle.Year} {vehicle.Price} ");
 		}
 
-		public List<Vehicle> GetAllVehicles()
+		public List<IVehicle> GetAllVehicles()
 		{
 			return vehicles;
 		}
 
-		public void PlaceOrder(Order order)
+		public void PlaceOrder(IOrder order)
 		{
 			orders.Add(order);
 			logger.Log($"Order was added");
 			logger.Log($"Details: {order.Person.Name} {order.Vehicle.Make} {order.Vehicle.Model} {order.Vehicle.Year} {order.Vehicle.Price} {order.DeliveryTime}");
 		}
 
-		public List<Order> GetAllOrders()
+		public List<IOrder> GetAllOrders()
 		{
 			return orders;
 		}
 
-		public void CancelOrder(Order order)
+		public void CancelOrder(IOrder order)
 		{
 			logger.Log($"Order was canceled");
 			logger.Log($"Details: {order.Person.Name} {order.Vehicle.Make} {order.Vehicle.Model} {order.Vehicle.Year} {order.Vehicle.Price} {order.DeliveryTime}");

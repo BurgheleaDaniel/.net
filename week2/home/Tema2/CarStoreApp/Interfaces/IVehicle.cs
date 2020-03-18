@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CarStoreApp.Clases;
-
+﻿
 namespace CarStoreApp.Interfaces
 {
 	interface IVehicle
@@ -31,7 +27,7 @@ namespace CarStoreApp.Interfaces
 			set;
 		}
 
-		Producer Producer
+		IProducer Producer
 		{
 			get;
 			set;

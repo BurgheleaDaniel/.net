@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CarStoreApp.Clases;
+﻿
+using System;
 
 namespace CarStoreApp.Interfaces
 {
 	interface IOrder
 	{
-		Person Person
+		IPerson Person
 		{
 			get;
 			set;
 		}
 
-		Vehicle Vehicle
+		IVehicle Vehicle
 		{
 			get;
 			set;

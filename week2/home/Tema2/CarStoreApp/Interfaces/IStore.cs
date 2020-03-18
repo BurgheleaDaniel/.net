@@ -1,7 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Text;
-using CarStoreApp.Clases;
 
 namespace CarStoreApp.Interfaces
 {
@@ -19,14 +17,14 @@ namespace CarStoreApp.Interfaces
 			set;
 		}
 
-		void AddVehicle(Vehicle vehicle);
+		void AddVehicle(IVehicle vehicle);
 
-		List<Vehicle> GetAllVehicles();
+		List<IVehicle> GetAllVehicles();
 
-		void PlaceOrder(Order order);
+		void PlaceOrder(IOrder order);
 
-		List<Order> GetAllOrders();
+		List<IOrder> GetAllOrders();
 
-		void CancelOrder(Order order);
+		void CancelOrder(IOrder order);
 	}
 }

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
+using System;
 using CarStoreApp.Interfaces;
 
 namespace CarStoreApp.Clases
@@ -9,9 +8,9 @@ namespace CarStoreApp.Clases
 	{
 		private string status;
 
-		public Person Person { get; set; }
+		public IPerson Person { get; set; }
 
-		public Vehicle Vehicle { get; set; }
+		public IVehicle Vehicle { get; set; }
 
 		public string Status
 		{
@@ -31,5 +30,8 @@ namespace CarStoreApp.Clases
 		}
 
 		public DateTime DeliveryTime { get; set; }
+
+		// IPerson IOrder.Person { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+		// IVehicle IOrder.Vehicle { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 	}
 }
