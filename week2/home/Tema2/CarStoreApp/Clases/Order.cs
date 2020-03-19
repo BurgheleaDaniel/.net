@@ -31,7 +31,5 @@ namespace CarStoreApp.Clases
 
 		public DateTime DeliveryTime { get; set; }
 
-		// IPerson IOrder.Person { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-		// IVehicle IOrder.Vehicle { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 	}
 }
