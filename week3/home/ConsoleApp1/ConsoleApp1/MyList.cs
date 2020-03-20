@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ConsoleApp1
 {
-	class MyList<T>
+	class MyList<T> : IEnumerable<T>
 	{
-		private int index;
+		private int capacity;
 		private int count;
 		private T[] data;
 
@@ -18,8 +18,8 @@ namespace ConsoleApp1
 		private void Initialize()
 		{
 			count = 0;
-			index = 2;
-			data = new T[index];
+			capacity = 2;
+			data = new T[capacity];
 		}
 
 		public void Add(T item)
@@ -57,9 +57,22 @@ namespace ConsoleApp1
 		{
 			if (count >= data.Length)
 			{
-				index = index * 2;
-				Array.Resize(ref data, index);
+				capacity = capacity * 2;
+				Array.Resize(ref data, capacity);
 			}
+		}
+
+		public IEnumerator<T> GetEnumerator()
+		{
+			foreach (T item in data)
+			{
+				yield return item;
+			}
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return this.GetEnumerator();
 		}
 	}
 }

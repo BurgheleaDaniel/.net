@@ -14,6 +14,11 @@ namespace ConsoleApp1
 			list.Add("eee");
 
 			list.RemoveAt(2);
+
+			foreach (string s in list)
+			{
+				Console.WriteLine(s);
+			}
 		}
 	}
 }
