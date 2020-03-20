@@ -26,7 +26,7 @@ namespace ConsoleApp1
 		{
 			CheckAndAllocateArrayMemory();
 
-			if (data.Length > count && data[count] == null)
+			if (data[count] == null)
 			{
 				data[count] = item;
 				count++;
