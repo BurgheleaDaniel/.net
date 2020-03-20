@@ -6,7 +6,8 @@ namespace Timer
 	{
 		static void Main(string[] args)
 		{
-			new MyTimer("alabalaportocala", 2).Run();
+			MyTimer timer = new MyTimer("alabalaportocala", 2);
+			timer.Run();
 		}
 	}
 }

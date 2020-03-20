@@ -27,7 +27,7 @@ namespace Timer
 				Thread.Sleep(seconds * 1000);
 			}
 		}
-		 
+
 		static void Notify(string str)
 		{
 			Console.WriteLine($"Notification received for: {str}");
