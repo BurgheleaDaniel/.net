@@ -57,10 +57,5 @@ namespace ParkingLotApp.Clases
 			}
 			return openSpaces;
 		}
-
-		private static bool spaceIsOpen(ISpace i)
-		{
-			return (i.Status == 1);
-		}
 	}
 }
