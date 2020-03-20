@@ -52,7 +52,7 @@ namespace ParkingLotApp.Clases
 			int openSpaces = 0;
 			foreach (ILevel level in levels)
 			{
-				List<ISpace> Result = new List<ISpace>(level.GetAllSpaces().FindAll(spaceIsOpen));
+				List<ISpace> Result = new List<ISpace>(level.GetAllSpaces().FindAll(space => space.Status == 1));
 				openSpaces += Result.Count;
 			}
 			return openSpaces;
