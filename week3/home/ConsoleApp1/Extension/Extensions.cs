@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Linq;
 namespace Extension
 {
 	public static class Extensions
 	{
 		public static T Sum<T>(this IEnumerable<T> list)
 		{
-			T suma = (dynamic)0;
+			T suma = (
+				mic)0;
 			foreach (var item in list)
 			{
 				suma += (dynamic)item;
@@ -28,7 +29,7 @@ namespace Extension
 
 		public static T Min<T>(this IEnumerable<T> list)
 		{
-			T min = (dynamic)(new List<T>(list)[0]);
+			T min = (dynamic)list.First();
 			foreach (var item in list)
 			{
 				if (min > (dynamic)item)
@@ -41,7 +42,7 @@ namespace Extension
 
 		public static T Max<T>(this IEnumerable<T> list)
 		{
-			T max = (dynamic)(new List<T>(list)[0]);
+			T max = (dynamic)list.First();
 			foreach (var item in list)
 			{
 				if (max < (dynamic)item)
@@ -54,7 +55,7 @@ namespace Extension
 
 		public static T Average<T>(this IEnumerable<T> list)
 		{
-			return (dynamic)list.Sum() / new List<T>(list).Count;
+			return (dynamic)list.Sum() / list.Count();
 		}
 
 	}
