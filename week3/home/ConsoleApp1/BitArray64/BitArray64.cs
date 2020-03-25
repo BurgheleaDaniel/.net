@@ -6,7 +6,7 @@ namespace BitArray64
 {
 	class BitArray64
 	{
-		private ulong value;
+		public ulong number;
 
 		public BitArray64(ulong val)
 		{
@@ -14,7 +14,7 @@ namespace BitArray64
 			{
 				throw new ArgumentException(String.Format("Value {0} is invalid!", val));
 			}
-			value = val;
+			this.number = val;
 		}
 
 		// Indexer declaration
@@ -24,15 +24,7 @@ namespace BitArray64
 			{
 				if (index >= 0 && index <= 63)
 				{
-					// Check the bit at position index
-					if ((value & (ulong)(1 << index)) == 0)
-					{
-						return 0;
-					}
-					else
-					{
-						return 1;
-					}
+					return (this.number >> index) & 1ul;
 				}
 				else
 				{
@@ -41,7 +33,7 @@ namespace BitArray64
 			}
 			set
 			{
-				if (index < 0 || index > 31)
+				if (index < 0 || index > 63)
 				{
 					throw new IndexOutOfRangeException(String.Format("Index {0} is invalid!", index));
 				}
@@ -51,10 +43,10 @@ namespace BitArray64
 				}
 
 				// Clear the bit at position index
-				value &= ~((ulong)(1 << index));
+				this.number &= ~(1ul << index);
 
 				// Set the bit at position index to value
-				value |= (ulong)(value << index);
+				this.number |= 1ul << index;
 			}
 		}
 
