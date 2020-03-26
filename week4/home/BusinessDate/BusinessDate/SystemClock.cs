@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BusinessDate
 {
-	class Clock : IClock
+	class SystemClock : IClock
 	{
 		public DateTime Now
 		{
@@ -21,7 +19,6 @@ namespace BusinessDate
 				return DateTime.UtcNow;
 			}
 		}
-
 
 		public BusinessDate Today
 		{

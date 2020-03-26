@@ -59,9 +59,15 @@
 
 
 			// 3 - print number of posts for each user.
-			//foreach (var user in allUsers)
+			//var result = allPosts.GroupBy(p => p.UserId)
+			//		.Select(g => new
+			//		{
+			//			UserId = g.Key,
+			//			NumberOfPosts = g.Count()
+			//		});
+			//foreach (var res in result)
 			//{
-			//	Console.WriteLine("user: " + user.Name + " " + "no of posts: " + allPosts.Where(post => post.UserId == user.Id).Count());
+			//	Console.WriteLine("user: " + res.UserId + " " + "no of posts: " + res.NumberOfPosts);
 			//}
 
 
@@ -123,10 +129,15 @@
 
 
 			// 12 - order users by number of posts
-			//var orderedUsersByNumberOfPosts = allUsers.OrderBy(u => allPosts.Where(post => post.UserId == u.Id).Count());
-			//foreach (var user in orderedUsersByNumberOfPosts)
+			//var result = allPosts.GroupBy(p => p.UserId)
+			//	.Select(g => new
+			//	{
+			//		UserId = g.Key,
+			//		NumberOfPosts = g.Count()
+			//	});
+			//foreach (var res in result.OrderBy(r => r.NumberOfPosts))
 			//{
-			//	Console.WriteLine(user.Id);
+			//	Console.WriteLine(res.UserId);
 			//}
 		}
 
