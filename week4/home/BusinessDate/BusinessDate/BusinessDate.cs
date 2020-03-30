@@ -30,16 +30,6 @@ namespace BusinessDate
 			}
 		}
 
-		int IComparable<BusinessDate>.CompareTo(BusinessDate other)
-		{
-			throw new NotImplementedException();
-		}
-
-		bool IEquatable<BusinessDate>.Equals(BusinessDate other)
-		{
-			throw new NotImplementedException();
-		}
-
 		internal static BusinessDate ParseFromIso8601String(string v)
 		{
 			string[] result = v.Split('-');
@@ -51,6 +41,95 @@ namespace BusinessDate
 			return new BusinessDate(Int32.Parse(result[0]), Int32.Parse(result[1]), Int32.Parse(result[2]));
 		}
 
+		bool IEquatable<BusinessDate>.Equals(BusinessDate other)
+		{
+			return this.Equals(other);
+		}
+
+		public override bool Equals(Object obj)
+		{
+			return obj is BusinessDate && this == (BusinessDate)obj;
+		}
+
+		public override int GetHashCode()
+		{
+			return Convert.ToInt32(string.Format("{0}{1}{2}", this.Year, this.Month, this.Day));
+		}
+
+		int IComparable<BusinessDate>.CompareTo(BusinessDate other)
+		{
+			// If other is not a valid object reference, this instance is greater.
+			if (other == null) return 1;
+
+			if (this < other)
+			{
+				return 1;
+			}
+			else if (this > other)
+			{
+				return -1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+
+		public static bool operator ==(BusinessDate x, BusinessDate y)
+		{
+			return x.Year == y.Year && x.Month == y.Month && x.Day == y.Day;
+		}
+
+		public static bool operator !=(BusinessDate x, BusinessDate y)
+		{
+			return x.Year != y.Year || x.Month != y.Month || x.Day != y.Day;
+		}
+
+		public static bool operator >(BusinessDate x, BusinessDate y)
+		{
+			return
+				(x.Year.CompareTo(y.Year) == 1)
+				|| (x.Year.CompareTo(y.Year) == 1 && x.Month.CompareTo(y.Month) == 1)
+				|| (x.Year.CompareTo(y.Year) == 1 && x.Month.CompareTo(y.Month) == 1 && x.Day.CompareTo(y.Day) == 1);
+		}
+
+		public static bool operator <(BusinessDate x, BusinessDate y)
+		{
+			return
+				(x.Year.CompareTo(y.Year) == -1)
+				|| (x.Year.CompareTo(y.Year) == -1 && x.Month.CompareTo(y.Month) == -1)
+				|| (x.Year.CompareTo(y.Year) == -1 && x.Month.CompareTo(y.Month) == -1 && x.Day.CompareTo(y.Day) == -1);
+		}
+
+		public static bool operator >=(BusinessDate x, BusinessDate y)
+		{
+			return
+				(x.Year.CompareTo(y.Year) >= 0)
+				|| (x.Year.CompareTo(y.Year) >= 0 && x.Month.CompareTo(y.Month) >= 0)
+				|| (x.Year.CompareTo(y.Year) >= 0 && x.Month.CompareTo(y.Month) >= 0 && x.Day.CompareTo(y.Day) >= 0);
+		}
+
+		public static bool operator <=(BusinessDate x, BusinessDate y)
+		{
+			return
+				(x.Year.CompareTo(y.Year) <= 0)
+				|| (x.Year.CompareTo(y.Year) <= 0 && x.Month.CompareTo(y.Month) <= 0)
+				|| (x.Year.CompareTo(y.Year) <= 0 && x.Month.CompareTo(y.Month) <= 0 && x.Day.CompareTo(y.Day) <= 0);
+		}
+
+
+		string IFormattable.ToString(string format, IFormatProvider formatProvider)
+		{
+			return this.ToString();
+		}
+
+		public override string ToString()
+		{
+			return $"{this.Day}-{this.Month}-{this.Year}";
+		}
+
+
+		// it's okay not to implement them 
 		XmlSchema IXmlSerializable.GetSchema()
 		{
 			throw new NotImplementedException();
@@ -64,31 +143,6 @@ namespace BusinessDate
 		void IXmlSerializable.WriteXml(XmlWriter writer)
 		{
 			throw new NotImplementedException();
-		}
-
-		string IFormattable.ToString(string? format, IFormatProvider? formatProvider)
-		{
-			return this.ToString();
-		}
-
-		public override string ToString()
-		{
-			return $"{this.Day}-{this.Month}-{this.Year}";
-		}
-
-		public override bool Equals(Object obj)
-		{
-			return obj is BusinessDate && this == (BusinessDate)obj;
-		}
-
-		public static bool operator ==(BusinessDate x, BusinessDate y)
-		{
-			return x.Year == y.Year && x.Month == y.Month && x.Day == y.Day;
-		}
-
-		public static bool operator !=(BusinessDate x, BusinessDate y)
-		{
-			return x.Year != y.Year || x.Month != y.Month || x.Day != y.Day;
 		}
 
 	}

@@ -23,10 +23,7 @@ namespace BusinessDate
 
 
 			var date2 = BusinessDate.ParseFromIso8601String("2015-06-10");
-			Console.WriteLine(date == date2);
-
-
-			// systemClock.Now
+			Console.WriteLine(date < date2);
 
 		}
 
