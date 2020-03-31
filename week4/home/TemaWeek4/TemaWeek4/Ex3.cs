@@ -56,9 +56,27 @@ namespace TemaWeek4
 			Console.WriteLine(urls.ElementAt(rand.Next(urls.Count())) + urls.ElementAt(rand.Next(urls.Count())));
 
 			Console.WriteLine("8.Given any URL, display last occurence of any repeating character");
+			String anyUrl = "google.com";
+			var repeatedCharsLast = anyUrl.GroupBy(x => x).Select(z => z.Key).Last();
+			Console.WriteLine(repeatedCharsLast);
+
 			Console.WriteLine("9.Insert [URL] at the beginning of URLs");
+			String delimiter = "[URL]";
+			foreach (var item in urls.Select(z => delimiter + z))
+			{
+				Console.WriteLine(item);
+			}
+
 			Console.WriteLine("10.Find out first occurence of character in given url");
+			anyUrl = "google.com";
+			var repeatedCharsFirst = anyUrl.GroupBy(x => x).Select(z => z.Key).First();
+			Console.WriteLine(repeatedCharsFirst);
+
 			Console.WriteLine("11.List out all the URLs with substring 'oo' in it.");
+			foreach (var item in urls.Where(z => z.Contains("oo")))
+			{
+				Console.WriteLine(item);
+			}
 		}
 	}
 }
