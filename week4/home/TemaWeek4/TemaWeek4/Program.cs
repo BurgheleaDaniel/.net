@@ -7,7 +7,8 @@ namespace TemaWeek4
 		static void Main(string[] args)
 		{
 			// Ex3.Run();
-			Ex4.Run();
+			// Ex4.Run();
+			Ex5.Run();
 		}
 	}
 }

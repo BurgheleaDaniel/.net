@@ -11,6 +11,7 @@ namespace TemaWeek4
 		{
 			ScanDir(@"D:\.net\week1\home\Tema1r\Tema1r", @"Ex1.cs", 5, 10);
 		}
+
 		private static void ScanDir(string d, string f, int from, int to)
 		{
 			Console.WriteLine($"=====Dir {d}=====");
