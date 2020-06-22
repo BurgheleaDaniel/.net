@@ -55,7 +55,7 @@
 
 			this.contentTxbRight.Text = result;
 
-			/*var uiScheduler = TaskScheduler.FromCurrentSynchronizationContext();
+			*//*var uiScheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
 			var t = new Task<string>(() =>
 			{
@@ -74,7 +74,7 @@
 				this.logLabelRight.Text = $@"Downloaded in {stopwatch.ElapsedMilliseconds} ms";
 			}, CancellationToken.None, TaskContinuationOptions.NotOnFaulted, uiScheduler);
 
-			t.Start();*/
+			t.Start(); *//*
 
 		}
 
