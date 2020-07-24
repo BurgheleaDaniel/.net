@@ -90,7 +90,6 @@ namespace ThriftShop.Controllers
 			await this.context.SaveChangesAsync();
 
 			this.notificationService.Notify($"Customer deleted: {id}");
-			this.notificationService.Notify($"Customer deleted: {id}");
 
 			return customer;
 		}

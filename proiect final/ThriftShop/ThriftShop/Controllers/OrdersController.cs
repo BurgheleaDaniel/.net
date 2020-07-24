@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ThriftShop.DataAccess;
@@ -11,17 +12,21 @@ using ThriftShop.Services;
 
 namespace ThriftShop.Controllers
 {
+	[Authorize]
 	[Route("api/orders")]
 	[ApiController]
 	public class OrdersController : Controller
 	{
 		private readonly ApiDbContext context;
 		private readonly INotificationService notificationService;
+		private IUserService _userService;
 
-		public OrdersController(ApiDbContext context, INotificationService notificationService)
+		public OrdersController(ApiDbContext context, INotificationService notificationService, IUserService userService)
 		{
 			this.context = context;
 			this.notificationService = notificationService;
+			this._userService = userService;
+
 		}
 
 		// GET: api/orders/1
