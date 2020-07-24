@@ -11,29 +11,29 @@ using ThriftShop.Services;
 
 namespace ThriftShop.Controllers
 {
+	[Route("api/stores")]
 	[ApiController]
-	[Route("api/products")]
-	public class ProductsController : ControllerBase
+	public class StoresController : Controller
 	{
 		private readonly ApiDbContext context;
 		private readonly INotificationService notificationService;
 
-		public ProductsController(ApiDbContext context, INotificationService notificationService)
+		public StoresController(ApiDbContext context, INotificationService notificationService)
 		{
 			this.context = context;
 			this.notificationService = notificationService;
 		}
 
-		// GET: api/products/1
+		// GET: api/stores/1
 		[HttpGet("{id}")]
-		public async Task<ActionResult<ProductModel>> Get(int id)
+		public async Task<ActionResult<StoreModel>> Get(int id)
 		{
 			if (id < 0)
 			{
 				throw new AccessViolationException("Negative id exception");
 			}
 
-			var entity = await this.context.Products.FindAsync(id);
+			var entity = await this.context.Stores.FindAsync(id);
 
 			if (entity == null)
 			{
@@ -43,33 +43,33 @@ namespace ThriftShop.Controllers
 			return entity.MapAsModel();
 		}
 
-		// GET: api/products
+		// GET: api/stores
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Product>>> GetAll()
+		public async Task<ActionResult<IEnumerable<Store>>> GetAll()
 		{
-			return await this.context.Products.ToListAsync();
+			return await this.context.Stores.ToListAsync();
 		}
 
-		// POST: api/products
+		// POST: api/stores
 		[HttpPost]
-		public async Task<ActionResult<Product>> PostProduct(Product product)
+		public async Task<ActionResult<Store>> PostStore(Store store)
 		{
-			this.context.Products.Add(product);
+			this.context.Stores.Add(store);
 			await this.context.SaveChangesAsync();
 
-			return this.CreatedAtAction("Get", new { id = product.Id }, product);
+			return this.CreatedAtAction("Get", new { id = store.Id }, store);
 		}
 
-		// PUT: api/products/1
+		// PUT: api/stores/1
 		[HttpPut("{id}")]
-		public async Task<IActionResult> Put(int id, Product product)
+		public async Task<IActionResult> Put(int id, Store store)
 		{
-			if (id != product.Id)
+			if (id != store.Id)
 			{
 				return this.BadRequest();
 			}
 
-			this.context.Entry(product).State = EntityState.Modified;
+			this.context.Entry(store).State = EntityState.Modified;
 
 			await this.context.SaveChangesAsync();
 
@@ -77,21 +77,21 @@ namespace ThriftShop.Controllers
 		}
 
 		[HttpDelete("{id}")]
-		public async Task<ActionResult<Product>> Delete(int id)
+		public async Task<ActionResult<Store>> Delete(int id)
 		{
-			var product = await this.context.Products.FindAsync(id);
+			var store = await this.context.Stores.FindAsync(id);
 
-			if (product == null)
+			if (store == null)
 			{
 				return this.NotFound();
 			}
 
-			this.context.Products.Remove(product);
+			this.context.Stores.Remove(store);
 			await this.context.SaveChangesAsync();
 
-			this.notificationService.Notify($"Product deleted: {id}");
+			this.notificationService.Notify($"Store deleted: {id}");
 
-			return product;
+			return store;
 		}
 
 	}

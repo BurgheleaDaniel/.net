@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ThriftShop.DataAccess;
+using ThriftShop.Middleware;
+using ThriftShop.Services;
 
 namespace ThriftShop
 {
@@ -28,8 +30,10 @@ namespace ThriftShop
 
 			services.AddSwaggerGen(c =>
 			{
-				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Thrift Shop API", Version = "v1" });
+				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Trift Shop API", Version = "v1" });
 			});
+
+			services.AddScoped<INotificationService, NotificationService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +42,10 @@ namespace ThriftShop
 			if (env.IsDevelopment())
 			{
 				app.UseExceptionHandler("/error-local-development");
+
+				app.UseSwagger();
+
+				app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Trift Shop API V1"); });
 			}
 			else
 			{
@@ -46,12 +54,7 @@ namespace ThriftShop
 
 			app.UseRouting();
 
-			app.UseSwagger();
-
-			app.UseSwaggerUI(c =>
-			{
-				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Thrift Shop API");
-			});
+			app.UseMiddleware<RequestLoggerMiddleware>();
 
 			app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 		}
